@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --color-vault-bg: #020205;
+  --color-violet: #8b5cf6;
+  --color-emerald: #10b981;
+  --color-gold: #f59e0b;
+  --color-slate-800: #1e293b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-vault-bg);
+  color: #e2e8f0;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #020205 100%);
+}
+
+.circuit-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hud-panel {
+  background: rgba(10, 10, 30, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.glitch-text {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 10px;
+  opacity: 0.7;
+  font-family: var(--font-mono);
+}
+
+.helix-dot {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.scanline {
+  width: 100%;
+  height: 2px;
+  background: rgba(139, 92, 246, 0.05);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  pointer-events: none;
+  animation: scan 8s linear infinite;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+@keyframes scan {
+  from { transform: translateY(0); }
+  to { transform: translateY(100vh); }
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
